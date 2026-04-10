@@ -1,0 +1,23 @@
+# Archivos generados por Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de datos del usuario
+historial.txt
+*.log
+
+# Entorno virtual
+.venv/
+venv/
+ENV/
+env/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
