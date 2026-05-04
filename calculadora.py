@@ -1,5 +1,7 @@
 # calculadora.py
 
+import math
+
 def mostrar_menu():
     """Muestra el menú principal de la calculadora"""
     print("\n=== CALCULADORA CON HISTORIAL === ")
@@ -7,9 +9,12 @@ def mostrar_menu():
     print("2. Restar (-) ")
     print("3. Multiplicar (*) ")
     print("4. Dividir (/) ")
-    print("5. Ver historial")
-    print("6. Borrar historial")
-    print("7. Salir")
+    print("5. Potencia (^) ")
+    print("6. Raíz Cuadrada (√) ")
+    print("7. Porcentaje (%) ")
+    print("8. Ver historial")
+    print("9. Borrar historial")
+    print("10. Salir")
     print("=" * 35)
 
 def obtener_numero(mensaje):
@@ -51,6 +56,28 @@ def dividir(a, b):
     operacion = f"{a} / {b}"
     return resultado, operacion
 
+def potencia(a, b):
+    """Calcula a elevado a b"""
+    resultado = a ** b
+    operacion = f"{a} ^ {b}"
+    return resultado, operacion
+
+def raiz_cuadrada(a):
+    """Calcula la raíz cuadrada de a"""
+    if a < 0:
+        raise ValueError("X Error: No se puede calcular la raíz cuadrada de un número negativo")
+    resultado = math.sqrt(a)
+    operacion = f"√{a}"
+    return resultado, operacion
+
+def porcentaje(a, b):
+    """Calcula el porcentaje de a respecto a b"""
+    if b == 0:
+        raise ValueError("X Error: No se puede calcular el porcentaje respecto a cero")
+    resultado = (a / 100) * b
+    operacion = f"{a} % de {b}"
+    return resultado, operacion
+
 def ver_historial():
     """Muestra todo el historial guardado"""
     try:
@@ -79,7 +106,7 @@ def main():
     """Función principal del programa"""
     while True:
         mostrar_menu()
-        opcion = input("\n Elige una opción (1-7): ")
+        opcion = input("\n Elige una opción (1-10): ")
 
         if opcion == "1":   #Sumar
             print("\n--- SUMA ---")
@@ -116,13 +143,42 @@ def main():
             except ValueError as e:
                 print(f"\n{e}")
 
-        elif opcion == "5":     #Ver historial
+        elif opcion == "5":     #Potencia
+            print("\n--- POTENCIA ---")
+            a = obtener_numero("Base: ")
+            b = obtener_numero("Exponente: ")
+            resultado, operacion = potencia(a, b)
+            print(f"\n Resultado: {operacion} = {resultado}")
+            guardar_en_historial(operacion, resultado)
+
+        elif opcion == "6":     #Raíz Cuadrada
+            print("\n--- RAÍZ CUADRADA ---")
+            a = obtener_numero("Número: ")
+            try:
+                resultado, operacion = raiz_cuadrada(a)
+                print(f"\n Resultado: {operacion} = {resultado}")
+                guardar_en_historial(operacion, resultado)
+            except ValueError as e:
+                print(f"\n{e}")
+
+        elif opcion == "7":     #Porcentaje
+            print("\n--- PORCENTAJE ---")
+            a = obtener_numero("Parte: ")
+            b = obtener_numero("Total: ")
+            try:
+                resultado, operacion = porcentaje(a, b)
+                print(f"\n Resultado: El {operacion} = {resultado}")
+                guardar_en_historial(operacion, resultado)
+            except ValueError as e:
+                print(f"\n{e}")
+
+        elif opcion == "8":     #Ver historial
             ver_historial()
 
-        elif opcion == "6":     #Borrar historial
+        elif opcion == "9":     #Borrar historial
             borrar_historial()
 
-        elif opcion == "7":
+        elif opcion == "10":    #Salir
             print("\n ¡Gracias por usar la calculadora!")
             break
 
