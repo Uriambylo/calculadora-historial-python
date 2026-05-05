@@ -1,9 +1,8 @@
-# Calculadora con historial
-
+# Calculadora con historial y Timestamp
 ![Versión Python]
 
 ## Descripción
-Calculadora báscia que guarda un historial de todas las operaciones realizadas en un archivo de texto.
+Calculadora con soporte para operaciones basicas y avanzadas, que registra **hora y fecha exacta** de cada cálculo y las guarda un historial en un archivo de texto.
 
 ## Caracteristicas 
 - Operaciones básicas: suma, resta, multiplicación, división
@@ -11,6 +10,11 @@ Calculadora báscia que guarda un historial de todas las operaciones realizadas 
 - Validación de errores (división entre cero, entradas no numéricas, raíz cuadrada negativa)
 - Guardado automático del historial
 - Visualización y borrado del historial
+- Timestamp automático: Cada operación guarda fecha y hora exacta
+- Estadísticas: Total de operaciones, días de uso, promedio diario, día más activo
+- Búsqueda por fecha: Consulta qué operaciones hiciste un día específico
+- Vista dual: Historial completo (con fechas) o solo operaciones
+- Borrado seguro: Con confirmación antes de eliminar
 
 ## Como ejecutar
 
